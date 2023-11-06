@@ -1,6 +1,7 @@
 from django.db import models
 
 
+# we dont need to write code to store genre objects in a database, Django will take care of that with model module
 class Genre(models.Model):
     name = models.CharField(max_length=255)
 
@@ -10,4 +11,6 @@ class Movie(models.Model):
     release_year = models.IntegerField()
     number_in_stock = models.IntegerField()
     daily_rate = models.FloatField()
-    genre = models.Foreignkey(Genre, on_delete=models.CASCADE)
+    
+    # to accociate a movie to a genre
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
